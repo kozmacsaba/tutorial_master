@@ -1,0 +1,1 @@
+<p>A tutorial aktivalva van <a href="<?=  $url ?>">itt</a> meg nezzheted jelenkezni.<br/>
