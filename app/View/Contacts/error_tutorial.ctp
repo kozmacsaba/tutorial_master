@@ -1,18 +1,17 @@
 <div class="col-md-9">
-    <?php echo $this->Session->flash() ?>
     <div class="email_send_box">
-        <h3>E-mail send</h3>
-        <?php echo $this->Form->create('Contact', array('enctype' => 'multipart/form-data')) ?>
+        <h3>E-mail kudles</h3>
+        <?php echo $this->Form->create('Contact') ?>
             <div class="form-group row">
                 <?php echo $this->Form->input('subject', array(
                                                     'type' => 'text',
-                                                    'label' => array('text' => 'Subject', 'class' => 'col-md-12', 'for' => 'Subject'),
+                                                    'label' => array('text' => 'Subject', 'class' => 'col-md-12', 'rol' => 'Subject'),
                                                     'wrap' => 'col-md-12',
                                                     'div' => false,
                                                     'name' => 'subject',
                                                     'class' => 'form-control'
                                                 )
-                                            ) 
+                                            )
                 ?>
             </div>
             <div class="form-group row">
@@ -20,17 +19,17 @@
                     <?php echo $this->Form->input('message', array(
                                                         'type' => 'textarea',
                                                         'label' => false,
+                                                        'wrap' => 'col-md-12',
                                                         'div' => false,
                                                         'id' => 'elm1',
-                                                        'cols' => '100',
                                                         'name' => 'message',
-                                                        'wrap' => 'col-md-12'
+                                                        'cols' => '100',
                                                     )
                                                 ) 
                     ?>
-                </div>
+                </div>    
             </div>
-            <?php echo $this->Form->input('Send e-mail', array('type' => 'submit', 'label' => false, 'class' => 'btn btn-default'))?>
+            <?php echo $this->Form->input('Send e-mail', array('type' => 'submit', 'label' => false, 'class' => 'btn btn-default')) ?>
         </form>
     </div>
 </div>

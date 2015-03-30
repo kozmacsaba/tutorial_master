@@ -63,7 +63,7 @@ class TutorialsController extends AppController{
     public function tutorial_list(){
         
         $tutorial_options = array(
-            'fields' => array('chapters', 'subsection', 'descriptions', 'video', 'power_point', 'visited', 'user_id', 'created_date'),
+            'fields' => array('id', 'chapters', 'subsection', 'SUBSTRING(Tutorial.descriptions, 1, 450) as descriptions', 'created_date'),
             'contain' => array(
                 'User' => array(
                      'fields' => array ('id', 'username')   
@@ -233,7 +233,31 @@ class TutorialsController extends AppController{
         $this->Tutorial->recursive = -1;
         $visitedTutorial = $this->Tutorial->find('all', $visitedTutorialOptions);
         $this->set('visitedTutorial', $visitedTutorial);
+    }
+    
+/****
+ * 
+ * Tutorial method
+ * 
+****/
+    
+    public function tutorial ($id = null){
         
+        $tutorial_options = array(
+            'fields' => array('id', 'chapters', 'subsection', 'descriptions', 'video', 'power_point', 'visited', 'user_id', 'created_date'),
+            'contain' => array(
+                'User' => array(
+                     'fields' => array ('id', 'username')   
+                )
+            ),
+            'conditions' => array(
+                'Tutorial.visited' => 1
+            )
+        );
+        
+        $this->Tutorial->recursive = -1;
+        $tutorialLists = $this->Tutorial->find('all', $tutorial_options);
+        $this->set('tutorialLists', $tutorialLists);
         
     }
 }
