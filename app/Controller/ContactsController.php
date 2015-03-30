@@ -104,7 +104,6 @@ class ContactsController extends AppController{
             $Email->send();
             
             $this->Session->setFlash(__('E-mail sikeres el van kuldve'));
-            
         }
     }
 }

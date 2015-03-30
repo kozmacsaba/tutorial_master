@@ -25,5 +25,7 @@ $(document).ready(function(){
                 null					
             ]
 
-        });    
+        });
+    
+    $('#my_tutorial_list').dataTable();
 });

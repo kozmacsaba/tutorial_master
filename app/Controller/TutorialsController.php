@@ -260,5 +260,28 @@ class TutorialsController extends AppController{
         $this->set('tutorialLists', $tutorialLists);
         
     }
+    
+/****
+ * 
+ * User tutorial method
+ * azokat a tutorialokat listazak amelyek a felhasznalo hozot letre
+ * 
+ ****/
+    
+    public function user_tutorial_list(){
+        
+        $userId = AuthComponent::user('id');
+        
+        $options = array(
+            'fields' => array('id', 'chapters', 'subsection', 'SUBSTRING(Tutorial.descriptions, 1, 450) as descriptions', 'visited', 'user_id', 'created_date'),
+            'conditions' => array(
+                'Tutorial.user_id' => $userId
+            )
+        );
+        
+        $this->Tutorial->recursive = -1;
+        $myTutorials = $this->Tutorial->find('all', $options);
+        $this->set('myTutorials', $myTutorials);
+    }
 }
 

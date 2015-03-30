@@ -84,7 +84,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                         <ul class="subsection_menu">
                         <?php if(AuthComponent::user('id')){ ?>
                             <li><?php echo $this->Html->link('Tutorial letrehozas', array('controller' => 'tutorials', 'action' => 'tutorial_created')) ?></li>
-                            <li><?php echo $this->Html->link('Sajat tutorialok', array('controller' => '', 'action' => '')) ?></li>
+                            <li><?php echo $this->Html->link('Sajat tutorialok', array('controller' => 'tutorials', 'action' => 'user_tutorial_list')) ?></li>
                             <li><?php echo $this->Html->link('Tesztek keszitese', array('controller' => '', 'action' => '')) ?></li>
                             <li><?php echo $this->Html->link('Sajat teszteim', array('controller' => '', 'action' => '')) ?></li>
                         <?php }else{ ?> 
