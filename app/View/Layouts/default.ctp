@@ -101,6 +101,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
     <?php
     echo $this->Html->script('jquery-1.11.2.min');
     echo $this->Html->script('bootstrap.min');
+    echo $this->Html->script('main');
     echo $this->Html->script('plugin/dataTables/jquery.dataTables.min');
     echo $this->Html->script('plugin/dataTables/jquery.dataTables.columnFilter');
     echo $this->Html->script('plugin/openmanagerdemo/openmanagerdemo/jscripts/tiny_mce/tiny_mce');

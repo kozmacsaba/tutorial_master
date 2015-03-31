@@ -22,6 +22,20 @@ class TutorialsController extends AppController{
     public function tutorial_created(){
         
         $createdDate = date('Y/m/d');
+        $userId = AuthComponent::user('id');
+       
+        $options = array(
+            'fields' => array('id', 'chapters'),
+            'conditions' => array(
+                'Tutorial.visited' => 1,
+                'Tutorial.delete' => 1,
+                'Tutorial.user_id' => $userId
+            )
+        );
+        
+        $this->Tutorial->recursive = -1;
+        $tutorialChapters = $this->Tutorial->find('all', $options);
+        $this->set('tutorialChapters', $tutorialChapters);
         
         if($this->request->is('post')){
             
@@ -355,5 +369,59 @@ class TutorialsController extends AppController{
             }
         }
     }
+    
+/****
+ * 
+ * Select chaptres method
+ * 
+****/
+    
+    /*public function select_chapters(){
+        
+        $userId = AuthComponent::user('id');
+        
+        if ($this->request->is('ajax')) {
+
+            $jsonResponse = array("data" => array(), "errors" => array());
+
+            if (isset($this->request->data['chapters']) && isset($this->request->data['selected_type']) &&
+                    !empty($this->request->data['chapters']) && !empty($this->request->data['selected_type'])) {
+
+                $enquete_id = (int) $this->request->data['chapters'];
+                $seleced_type = $this->request->data['selected_type'];
+
+                if (!$this->updateEnqueteType($enquete_id, $seleced_type)) {
+                    $jsonResponse['errors'][] = 21;
+                }
+            } else if (isset($this->request->data['chapters']) && isset($this->request->data['puissance_installee']) &&
+                    !empty($this->request->data['chapters']) && !empty($this->request->data['puissance_installee'])) {
+
+                $enquete_id = (int) $this->request->data['chapters'];
+
+                $updateValues = array(
+                    'puissance_installee' => $this->request->data['puissance_installee']
+                );
+                $conditions = array(
+                    'Enquete.id' => $enquete_id
+                );
+                try {
+                    if (!$this->Enquete->updateAll($updateValues, $conditions)) {
+                        $jsonResponse['errors'][] = 32;
+                    }
+                } catch (Exception $e) {
+                    $jsonResponse['errors'][] = 22;
+                }
+            } else {
+                $jsonResponse['errors'][] = 1;
+            }
+
+            $this->set('json_response', json_encode($jsonResponse));
+            $this->render('json_all', 'ajax');
+        } else {
+
+            throw new InternalErrorException('Not accessible!');
+        }
+        
+    }*/
 }
 

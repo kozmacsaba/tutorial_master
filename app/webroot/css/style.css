@@ -224,12 +224,13 @@ a.logut:hover{
 .tutorial_bloks{
     width: 100%;
     border: 1px solid red;
+    margin-bottom: 20px;
 }
 
 .tutorial_bloks .title{
     padding: 14px 18px;
     border-bottom: 1px solid brown;
-    height: 80px;
+    //height: 80px;
 }
 .tutorial_bloks .title h3{
     margin: 0px;
@@ -327,3 +328,11 @@ pre, code {
     margin-top: -35px;
 }
 
+.created_tutorial_bloks select{
+    margin-left: 10px;
+}
+
+.tutorial_bloks h4{
+    font-size: 15px;
+    margin: 0px;
+}

@@ -61,6 +61,7 @@ table.dataTable tbody tr {
   background-color: white;
   border-left: 1px solid #999;
   border-right: 1px solid #999;
+  border-bottom: 1px solid #999;
 }
 table.dataTable tbody tr.selected {
   background-color: #b0bed9;
