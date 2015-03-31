@@ -197,6 +197,7 @@ a.logut:hover{
 .created_tutorial_bloks{
     width: 100%;
     border: 1px solid #449d44;
+    margin-bottom: 20px;
 }
 
 .created_tutorial_bloks h2{
@@ -315,5 +316,14 @@ pre, code {
 .tutorial_bloks .title span.error a{
     color: red !important;
     text-decoration: none;
+}
+
+.submit_bg{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.backe_button{
+    margin-top: -35px;
 }
 

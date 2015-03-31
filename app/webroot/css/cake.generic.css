@@ -270,11 +270,11 @@ form .required label:after {
 	content: '*';
 	display:inline;
 }
-form div.submit {
+/*form div.submit {
 	border: 0;
 	clear: both;
 	margin-top: 10px;
-}
+}*/
 label {
 	//display: block;
 	//font-size: 110%;

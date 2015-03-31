@@ -27,5 +27,16 @@ $(document).ready(function(){
 
         });
     
-    $('#my_tutorial_list').dataTable();
+    $('#my_tutorial_list').dataTable().columnFilter(
+        { sPlaceHolder: "head:before",
+            aoColumns: [ 
+                { type: "text" },
+                { type: "text" },
+                null,
+                { type: "select", values: [ 'Activ', 'Nem activ'] },
+                { type: "text" },
+                null					
+            ]
+
+        });
 });

@@ -27,6 +27,7 @@ class TutorialsController extends AppController{
             
             $this->Tutorial->create();
             $this->request->data['Tutorial']['visited'] = 2;
+            $this->request->data['Tutorial']['delete'] = 1;
             $this->request->data['Tutorial']['user_id'] = AuthComponent::user('id');
             $this->request->data['Tutorial']['created_date'] = $createdDate;
             
@@ -70,7 +71,8 @@ class TutorialsController extends AppController{
                 )
             ),
             'conditions' => array(
-                'Tutorial.visited' => 1
+                'Tutorial.visited' => 1,
+                'Tutorial.delete' => 1
             )
         );
         
@@ -93,6 +95,9 @@ class TutorialsController extends AppController{
                 'User' => array(
                     'fields' => array('username', 'email')
                 )
+            ),
+            'conditions' => array(
+                'Tutorial.delete' => 1
             )
         );
         
@@ -251,7 +256,9 @@ class TutorialsController extends AppController{
                 )
             ),
             'conditions' => array(
-                'Tutorial.visited' => 1
+                'Tutorial.id' => $id,
+                'Tutorial.visited' => 1,
+                'Tutorial.delete' => 1
             )
         );
         
@@ -273,7 +280,7 @@ class TutorialsController extends AppController{
         $userId = AuthComponent::user('id');
         
         $options = array(
-            'fields' => array('id', 'chapters', 'subsection', 'SUBSTRING(Tutorial.descriptions, 1, 450) as descriptions', 'visited', 'user_id', 'created_date'),
+            'fields' => array('id', 'chapters', 'subsection', 'SUBSTRING(Tutorial.descriptions, 1, 300) as descriptions', 'visited', 'user_id', 'created_date', 'delete'),
             'conditions' => array(
                 'Tutorial.user_id' => $userId
             )
@@ -282,6 +289,71 @@ class TutorialsController extends AppController{
         $this->Tutorial->recursive = -1;
         $myTutorials = $this->Tutorial->find('all', $options);
         $this->set('myTutorials', $myTutorials);
+    }
+    
+/****
+ * 
+ * Tutorial edit method
+ * 
+ ****/
+    
+    public function tutorial_edit($id = null){
+        
+        $editTutorial = $this->Tutorial->findById($id);
+        if($this->request->is(array('post', 'put'))){
+            $this->Tutorial->id = $id;
+            if($this->Tutorial->save($this->request->data)){
+                return $this->redirect(array('action' => 'user_tutorial_list'));
+            }
+            else{
+                $this->Session->setFlash(_('The user could not be saved. Pleasem try again'));
+            }
+        }
+        $this->request->data = $editTutorial;
+        $this->set('editTutorial', $editTutorial);
+    }
+    
+/****
+ * 
+ * Tutorial deleted method
+ * 
+ ****/
+    
+    public function user_tutorial_delet($id = null){
+        
+        $deleted = $this->Tutorial->findById($id);
+        if($this->request->is('post')){
+            $this->Tutorial->id = $id;
+            if($this->Tutorial->saveField('delete', 0)){
+                $this->Session->setFlash(__("A tutorialt sikeresen torolted"));
+                return $this->redirect(array('action' => 'user_tutorial_list'));
+            }
+            else{
+                $this->Session->setFlash(__("Nem sikerult a tutorialt le torolnod"));
+            }
+        }
+        
+    }
+    
+/****
+ * 
+ * Tutorial not deleted mehtod
+ * 
+****/
+    
+    public function user_tutorial_not_deleted($id = null){
+        
+        $deleted = $this->Tutorial->findById($id);
+        if($this->request->is('post')){
+            $this->Tutorial->id = $id;
+            if($this->Tutorial->saveField('delete', 1)){
+                $this->Session->setFlash(__("A tutorialt sikeresen aktivaltad"));
+                return $this->redirect(array('action' => 'user_tutorial_list'));
+            }
+            else{
+                $this->Session->setFlash(__("Nem sikerult a tutorialt aktivalni"));
+            }
+        }
     }
 }
 
