@@ -4,6 +4,7 @@ App::uses('AppModel', 'Model');
  * Question Model
  *
  * @property Tutorial $Tutorial
+ * @property User $User
  * @property Respon $Respon
  * @property Score $Score
  */
@@ -28,6 +29,13 @@ class Question extends AppModel {
 		'Tutorial' => array(
 			'className' => 'Tutorial',
 			'foreignKey' => 'tutorial_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'user_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

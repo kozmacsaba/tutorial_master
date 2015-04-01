@@ -27,7 +27,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
-
+                
+                echo $this->Html->script('jquery-1.11.2.min');
 		echo $this->Html->css('cake.generic');
                 echo $this->Html->css('bootstrap.min');
                 echo $this->Html->css('style');
@@ -85,7 +86,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                         <?php if(AuthComponent::user('id')){ ?>
                             <li><?php echo $this->Html->link('Tutorial letrehozas', array('controller' => 'tutorials', 'action' => 'tutorial_created')) ?></li>
                             <li><?php echo $this->Html->link('Sajat tutorialok', array('controller' => 'tutorials', 'action' => 'user_tutorial_list')) ?></li>
-                            <li><?php echo $this->Html->link('Tesztek keszitese', array('controller' => '', 'action' => '')) ?></li>
+                            <li><?php echo $this->Html->link('Tesztek keszitese', array('controller' => 'questions', 'action' => 'questions')) ?></li>
                             <li><?php echo $this->Html->link('Sajat teszteim', array('controller' => '', 'action' => '')) ?></li>
                         <?php }else{ ?> 
                             <li><?php echo $this->Html->link('Kuldjel te is leirasat', array('controller' => '', 'action' => '')) ?></li>    
@@ -99,7 +100,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
     </div>
 	
     <?php
-    echo $this->Html->script('jquery-1.11.2.min');
+    
     echo $this->Html->script('bootstrap.min');
     echo $this->Html->script('main');
     echo $this->Html->script('plugin/dataTables/jquery.dataTables.min');

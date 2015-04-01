@@ -337,6 +337,23 @@ pre, code {
     margin: 0px;
 }
 
+.questionx_box{
+    border: 1px solid #0000ff;    
+}
+
+.questionx_box h3{
+    font-size: 16px;
+    color: #000;
+    padding: 14px 18px;
+    margin: 0px;
+    border-bottom: 1px solid #0048ab;
+    font-weight: bold;
+}
+
+.questionx_box label{
+    text-align: left !important;
+}
+
 th, td { white-space: nowrap; }
     div.dataTables_wrapper {
         width: 800px !important;

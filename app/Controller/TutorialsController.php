@@ -104,7 +104,7 @@ class TutorialsController extends AppController{
     public function admin_tutorial_list(){
         
         $tutorial = array(
-            'fields' =>  array('id', 'chapters', 'subsection', 'descriptions', 'video', 'visited', 'user_id', 'created_date'),
+            'fields' =>  array('id', 'chapters', 'subsection', 'descriptions', 'visited', 'user_id', 'created_date'),
             'contain' => array(
                 'User' => array(
                     'fields' => array('username', 'email')
@@ -243,7 +243,7 @@ class TutorialsController extends AppController{
     public function visited_tutorial($id = null){
         
         $visitedTutorialOptions = array(
-          'fields' => array('id', 'chapters', 'subsection', 'descriptions', 'video', 'visited', 'user_id', 'created_date'),
+          'fields' => array('id', 'chapters', 'subsection', 'descriptions', 'visited', 'user_id', 'created_date'),
           'contain' => array(
               'User' => array(
                   'fields' => array ('id', 'username', 'email')
