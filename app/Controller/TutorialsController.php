@@ -104,10 +104,13 @@ class TutorialsController extends AppController{
     public function admin_tutorial_list(){
         
         $tutorial = array(
-            'fields' =>  array('id', 'chapters', 'subsection', 'descriptions', 'video', 'power_point', 'visited', 'user_id', 'created_date'),
+            'fields' =>  array('id', 'chapters', 'subsection', 'descriptions', 'video', 'visited', 'user_id', 'created_date'),
             'contain' => array(
                 'User' => array(
                     'fields' => array('username', 'email')
+                ),
+                'Powerpoint' => array(
+                    'fields' => array('id', 'powerpoint', 'tutorial_id')
                 )
             ),
             'conditions' => array(
@@ -117,6 +120,8 @@ class TutorialsController extends AppController{
         
         $this->Tutorial->recursive = -1;
         $adminTutorialLists = $this->Tutorial->find('all', $tutorial);
+        //var_dump($adminTutorialLists);
+        //exit();
         $this->set('adminTutorialLists', $adminTutorialLists);
     }
     
@@ -238,10 +243,13 @@ class TutorialsController extends AppController{
     public function visited_tutorial($id = null){
         
         $visitedTutorialOptions = array(
-          'fields' => array('id', 'chapters', 'subsection', 'descriptions', 'video', 'power_point', 'visited', 'user_id', 'created_date'),
+          'fields' => array('id', 'chapters', 'subsection', 'descriptions', 'video', 'visited', 'user_id', 'created_date'),
           'contain' => array(
               'User' => array(
                   'fields' => array ('id', 'username', 'email')
+              ),
+              'Powerpoint' => array(
+                    'fields' => array('id', 'powerpoint', 'tutorial_id')
               )
           ),
           'conditions' => array(
@@ -263,7 +271,7 @@ class TutorialsController extends AppController{
     public function tutorial ($id = null){
         
         $tutorial_options = array(
-            'fields' => array('id', 'chapters', 'subsection', 'descriptions', 'video', 'power_point', 'visited', 'user_id', 'created_date'),
+            'fields' => array('id', 'chapters', 'subsection', 'descriptions', 'video', 'visited', 'user_id', 'created_date'),
             'contain' => array(
                 'User' => array(
                      'fields' => array ('id', 'username')   

@@ -104,6 +104,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
     echo $this->Html->script('main');
     echo $this->Html->script('plugin/dataTables/jquery.dataTables.min');
     echo $this->Html->script('plugin/dataTables/jquery.dataTables.columnFilter');
+    echo $this->Html->script('plugin/dataTables/dataTables.responsive');
     echo $this->Html->script('plugin/openmanagerdemo/openmanagerdemo/jscripts/tiny_mce/tiny_mce');
     echo $this->Html->script('plugin/highlight/highlight.pack');
     echo $this->Html->script('dataTableList');

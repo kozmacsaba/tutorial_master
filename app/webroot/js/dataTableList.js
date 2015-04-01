@@ -1,5 +1,8 @@
 $(document).ready(function(){
-            
+   $('.proba').dataTable( {
+        "scrollX": true
+    } );
+    
     $('#user_list').dataTable().columnFilter(
         { sPlaceHolder: "head:before",
             aoColumns: [ 

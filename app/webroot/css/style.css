@@ -336,3 +336,9 @@ pre, code {
     font-size: 15px;
     margin: 0px;
 }
+
+th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: 800px !important;
+        margin: 0 auto !important;
+}

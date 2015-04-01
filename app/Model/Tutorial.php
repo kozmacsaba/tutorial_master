@@ -4,28 +4,14 @@ App::uses('AppModel', 'Model');
  * Tutorial Model
  *
  * @property User $User
+ * @property Codezip $Codezip
+ * @property Powerpoint $Powerpoint
  * @property Question $Question
  * @property Score $Score
+ * @property Video $Video
  */
 class Tutorial extends AppModel {
 
-/**
- * Validation rules
- *
- * @var array
- */
-	/*public $validate = array(
-		'created_date' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-	);*/
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -50,6 +36,32 @@ class Tutorial extends AppModel {
  * @var array
  */
 	public $hasMany = array(
+		'Codezip' => array(
+			'className' => 'Codezip',
+			'foreignKey' => 'tutorial_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Powerpoint' => array(
+			'className' => 'Powerpoint',
+			'foreignKey' => 'tutorial_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
 		'Question' => array(
 			'className' => 'Question',
 			'foreignKey' => 'tutorial_id',
@@ -65,6 +77,19 @@ class Tutorial extends AppModel {
 		),
 		'Score' => array(
 			'className' => 'Score',
+			'foreignKey' => 'tutorial_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Video' => array(
+			'className' => 'Video',
 			'foreignKey' => 'tutorial_id',
 			'dependent' => false,
 			'conditions' => '',
