@@ -14,6 +14,10 @@ body{
     font-family: Arial;
 }
 
+form{
+    margin-top: 20px;
+}
+
 #header{
     width: 100%;
     margin-top: 20px;
@@ -352,10 +356,19 @@ pre, code {
 
 .questionx_box label{
     text-align: left !important;
+    padding-left: 20px;
 }
 
 th, td { white-space: nowrap; }
     div.dataTables_wrapper {
         width: 800px !important;
         margin: 0 auto !important;
+}
+
+.add_subsection{
+    font-size: 12px;
+}
+
+.form-horizontal .checkbox, .form-horizontal .checkbox-inline, .form-horizontal .radio, .form-horizontal .radio-inline {
+  padding-top: 0px !important;
 }

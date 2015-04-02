@@ -315,10 +315,10 @@ input[type=radio] {
 	padding: 0;
 	line-height: 26px;
 }
-.radio label {
+/*.radio label {
 	margin: 0 0 6px 20px;
 	line-height: 26px;
-}
+}*/
 input[type=submit] {
 	display: inline;
 	font-size: 110%;

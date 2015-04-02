@@ -25,7 +25,7 @@ class QuestionsController extends AppController{
         
         $this->loadModel('Tutorial');
         $option = array(
-          'fields' => array('id', 'chapters', 'subsection', 'user_id'),
+          'fields' => array('id', 'chapters', 'subsection', 'user_id', 'chapters_id'),
           'conditions' => array(
               'Tutorial.user_id' => $userId
           )  

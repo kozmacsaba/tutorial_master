@@ -54,7 +54,7 @@ class TutorialsController extends AppController{
                 $Email = new CakeEmail();
                 $Email->config('gmail');
                 $Email->template('tutorial_created');
-                $Email->viewVars(array('url' => $ms, 'tutorial_cime' => $this->request->data['Tutorial']['chapters']));
+                $Email->viewVars(array('url' => $ms));
                 $Email->emailFormat('html');
                 $Email->from(array('sany.geza234@gmail.com' => 'Tutorial Masters'));
                 $Email->subject('Created Tutorial');

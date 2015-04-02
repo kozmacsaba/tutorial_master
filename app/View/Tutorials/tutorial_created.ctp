@@ -1,3 +1,15 @@
+<?php
+    
+    foreach ($tutorialChapters as $chapters){
+        
+        $tutorialId[] = array(
+        'id' => $chapters['Tutorial']['id'],
+        'chapters' => $chapters['Tutorial']['chapters']
+    );
+     
+}
+
+?> 
 <div class="col-md-9">
     <?php echo $this->Session->flash() ?>
     <div class="created_tutorial_bloks">
@@ -37,10 +49,10 @@
             <div class="form-group row">
                 <label class="col-md-12" for="Valaszal cimet">Valaszal tutorial cimet</label>
                 <div class="col-md-12">
-                    <select name="data[Tutorial][chapters]" id="tutorialChapters" class="form-control">
+                    <select name="data[Tutorial][chapters_id]" id="tutorialChapters" class="form-control">
                         <option value="-- || --">-- || --</option>
                         <?php foreach ($tutorialChapters as $chapters): ?>
-                        <option value="<?= $chapters['Tutorial']['chapters'] ?>"><?= $chapters['Tutorial']['chapters'] ?></option>
+                        <option value="<?= $chapters['Tutorial']['id'] ?>"><?= $chapters['Tutorial']['chapters'] ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>    
@@ -77,6 +89,3 @@
         Alcimek letrehozasa a tutorialokhoz
     </div>
 </div>
-<script type="text/javascript">
-    //var tutorialChaptersList = "<?php echo Router::url(array('controller' => 'tutorials', 'action' => 'select_chapters')); ?>";
-</script>    
