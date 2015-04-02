@@ -34,7 +34,7 @@ foreach ($questions as $questionId){
                 </div>
             </div>
             <div class="type"></div>
-            <div class="form-group row">
+            <div class="form-group row valasz">
                 <?php 
                     echo $this->Form->input('name', array(
                                                     'type' => 'text',
@@ -69,10 +69,15 @@ foreach ($questions as $questionId){
 <script type="text/javascript">
     $(document).ready(function() {
         
-        //var chapters = '';
+       /******* 
+         * 
+         * all cimek letrehozasa kezdete 
+         * 
+        *******/ 
+       
         var html = '';
         var tutorial = JSON.parse( '<?php echo json_encode($tutorialId); ?>' );
-       //console.log(tutorial);
+       
         $('.add_subsection').click(function(){
             var chapters = $('#QuestionTutorialId').val();
             for (var obj in tutorial){
@@ -93,6 +98,61 @@ foreach ($questions as $questionId){
                 
             
         });
+        
+        /******* 
+         * 
+         * all cimek letrehozasa vege 
+         * 
+        *******/
+       
+       /******* 
+         * 
+         * A kerdesre adot valasz tipusok kezdete 
+         * 
+        *******/
+       
+        $('#QuestionType1, #QuestionType2, #QuestionType3').click(function(){
+            if (1 == $(this).val()){
+                html += '<div class="form-group row">';
+                html += '<label for="Helyes valasz:" class="control-label col-md-2">Valasz:</label>';
+                html += '<div class="col-md-6">';
+                html += '<input type="text" class="form-control">';
+                html += '</div>';
+                html += '</div>';
+
+                $('.valasz').after(html);
+            }
+            
+            if(2 == $(this).val()){
+                html += '<div class="form-group row">'; // form-group row start
+                html += '<label class="control-label col-md-2">Valaszok:</label>';
+                html += '<div class="col-md-10">'; // col-md-10 start
+                html += '<div class="col-md-3 helyes_valaszok">'; // col-md-5 strat
+                html += '<div class="radio">'; // radio start
+                html += '<label class="control-label">'
+                html += '<input type="radio" name="helyesvalasz" id="valaszok">';
+                html += 'Helyes valasz:'
+                html += '</label>'
+                html += '</div>'; // radio end
+                html += '</div>'; // col-md-5 end
+                html += '<div class="col-md-4 helyes_valaszok">'; // col-md-5 strat
+                html += '<input type="text" class="form-control">';
+                html += '</div>' // col-md-5 end
+                html += '</div>'; // col-md-10 end
+                html += '</div>'; // form-group row end
+                
+                $('.valasz').after(html);
+            }
+          
+        });
+       
+       
+       /******* 
+         * 
+         * A kerdesre adot valasz tipusok vege 
+         * 
+        *******/
+         
         
     });
 </script>
