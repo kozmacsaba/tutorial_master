@@ -271,7 +271,7 @@ class TutorialsController extends AppController{
     public function tutorial ($id = null){
         
         $tutorial_options = array(
-            'fields' => array('id', 'chapters', 'subsection', 'descriptions', 'video', 'visited', 'user_id', 'created_date'),
+            'fields' => array('id', 'chapters', 'subsection', 'descriptions', 'visited', 'user_id', 'created_date'),
             'contain' => array(
                 'User' => array(
                      'fields' => array ('id', 'username')   

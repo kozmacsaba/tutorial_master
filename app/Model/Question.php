@@ -3,9 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * Question Model
  *
- * @property Tutorial $Tutorial
  * @property User $User
- * @property Respon $Respon
  * @property Score $Score
  */
 class Question extends AppModel {
@@ -26,13 +24,6 @@ class Question extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Tutorial' => array(
-			'className' => 'Tutorial',
-			'foreignKey' => 'tutorial_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
 		'User' => array(
 			'className' => 'User',
 			'foreignKey' => 'user_id',
@@ -48,19 +39,6 @@ class Question extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'Respon' => array(
-			'className' => 'Respon',
-			'foreignKey' => 'question_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
 		'Score' => array(
 			'className' => 'Score',
 			'foreignKey' => 'question_id',
