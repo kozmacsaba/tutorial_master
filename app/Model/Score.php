@@ -1,20 +1,13 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Question Model
+ * Score Model
  *
  * @property Tutorial $Tutorial
+ * @property Question $Question
  * @property User $User
- * @property Score $Score
  */
-class Question extends AppModel {
-
-/**
- * Display field
- *
- * @var string
- */
-	public $displayField = 'name';
+class Score extends AppModel {
 
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -32,6 +25,13 @@ class Question extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
+		'Question' => array(
+			'className' => 'Question',
+			'foreignKey' => 'question_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
 		'User' => array(
 			'className' => 'User',
 			'foreignKey' => 'user_id',
@@ -40,26 +40,4 @@ class Question extends AppModel {
 			'order' => ''
 		)
 	);
-
-/**
- * hasMany associations
- *
- * @var array
- */
-	public $hasMany = array(
-		'Score' => array(
-			'className' => 'Score',
-			'foreignKey' => 'question_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)
-	);
-
 }

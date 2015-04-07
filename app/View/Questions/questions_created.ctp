@@ -10,6 +10,7 @@ foreach ($questions as $questionId){
 
 ?>
 <div class="col-md-9">
+    <?php //echo $this->Session->flash(); ?>
     <div class="questionx_box">
         <h3>Kerdesek letrehozas</h3>
         <?php echo $this->Form->create('Question', array('class' => 'form-horizontal')) ?>

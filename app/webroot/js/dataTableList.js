@@ -42,4 +42,16 @@ $(document).ready(function(){
             ]
 
         });
+        
+    $('#question_list').dataTable().columnFilter(
+        { sPlaceHolder: "head:before",
+            aoColumns: [ 
+                { type: "text" },
+                { type: "text" },
+                { type: "text" },
+                { type: "text" },
+                null					
+            ]
+
+        });
 });

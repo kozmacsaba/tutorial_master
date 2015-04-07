@@ -393,3 +393,47 @@ th, td { white-space: nowrap; }
 .add_question{
     font-size: 12px;
 }
+
+.button{
+    margin-bottom: 5px;
+}
+
+.questionx_box .title{
+    padding: 14px 18px;
+     border-bottom: 1px solid #0048ab;
+}
+
+.questionx_box .title h3{
+    font-size: 16px;
+    color: #000;
+    margin: 0px;
+    font-weight: bold;
+    padding: 0px;
+    border: none;
+}
+
+.questionx_box .title span{
+    font-size: 12px;
+    color: #999;
+    font-weight: normal;
+}
+
+.questions{
+    font-size: 12px;
+    font-weight: normal;
+    padding: 14px 18px;
+}
+
+.questions p.question_title{
+    font-size: 16px;
+}
+
+.form_question{
+    margin-top: 0px;
+    width: 100%;
+}
+
+.form_question .form-group{
+    margin-right: 0px;
+    margin-left: 0px;
+}

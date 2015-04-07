@@ -1,20 +1,34 @@
 <div class="col-md-9">
-    <?php
-        foreach ($questionList as $list){
-        $response = $list['Question']['respons'];
-        }
-        $response = json_decode($response);
-        $helyesvalasz = !empty($response->helyesvalasz) ? $response->helyesvalasz : "";
-        $rosszvalasz = !empty($response->rosszvalasz) ? $response->rosszvalasz : "";
-        $rosszvalasz1 = !empty($response->rosszvalasz1) ? $response->rosszvalasz1 : "";
-        $rosszvalasz2 = !empty($response->rosszvalasz2) ? $response->rosszvalasz2 : "";
-        
-        echo $helyesvalasz;
-        echo '<br>';
-        echo $rosszvalasz;
-        echo '<br>';
-        echo $rosszvalasz1;
-        echo '<br>';
-        echo $rosszvalasz2;
-    ?>
+    <table id="question_list" class="display" width="100%" >
+        <thead>
+            <tr>
+                <th>Tutorial neve</th>
+                <th>Felhasznalo</th>
+                <th>E-mail</th>
+                <th>Datum</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>Tutorial neve</th>
+                <th>Felhasznalo</th>
+                <th>E-mail cim</th>
+                <th>Datum</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($questionList as $list): ?>
+            <tr>
+                <td><?= $list['Tutorial']['chapters'] ?></td>
+                <td><?= $list['User']['username'] ?></td>
+                <td><?= $list['User']['email'] ?></td>
+                <td><?= $list['Question']['created'] ?></td>
+                <td>
+                    <?php echo $this->Html->link('Teszt inditasa', array('controller' => 'questions', 'action' => 'question', $list['Question']['tutorial_id']), array('class' => 'btn btn-success button')) ?><br>
+                    <?php echo $this->Html->link('E-mail kuldes', array('controller' => 'questions', 'action' => 'email_send', $list['Question']['id']), array('class' => 'btn btn-info')) ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 </div>

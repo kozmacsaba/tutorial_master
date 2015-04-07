@@ -19,7 +19,7 @@ class QuestionsController extends AppController{
  *  
 ***/
     
-    public function questions(){
+    public function questions_created(){
         
         $createdData = date('Y/m/d');
         $userId = AuthComponent::user('id');
@@ -64,7 +64,7 @@ class QuestionsController extends AppController{
             
             if($this->Question->save($this->request->data)){
                 $this->Session->setFlash(__('Sikeresen le van mentve.'));
-                return $this->redirect(array('action' => 'questions'));
+                return $this->redirect(array('action' => 'questions_created'));
             }
         }
         else{
@@ -74,8 +74,70 @@ class QuestionsController extends AppController{
     
     public function question_list(){
         
-        $questionList = $this->Question->find('all');
+        $userId = AuthComponent::user('id');
         
+        $option = array(
+            'fields' => array('id', 'created', 'tutorial_id'),
+            'contain' => array(
+                'Tutorial' => array(
+                    'fields' => array('chapters')
+                ),
+                'User' => array(
+                    'fields' => array('username', 'email')
+                )
+            ),
+            'conditions' => array(
+                'Question.user_id !=' => $userId
+            )
+            
+        );
+        
+        $questionList = $this->Question->find('all', $option);
+        $this->set('questionList', $questionList);
+    }
+    
+    public function question($id = NULL){
+        
+        $option = array(
+            'fields' => array('id', 'name', 'respons', 'type', 'created', 'tutorial_id'),
+            'contain' => array(
+                'Tutorial' => array(
+                    'fields' => ('chapters')
+                ),
+                'User' => array(
+                    'fields' => ('username')
+                )
+            ),
+            'conditions' => array(
+                'Question.tutorial_id' => $id
+            )
+        );
+        
+        $questions = $this->Question->find('all', $option);
+        $this->set('questions', $questions);
+    }
+    
+    public function user_question_list($id = NULL){
+        
+        $userId = AuthComponent::user('id');
+        
+        $option = array(
+            'fields' => array('id', 'created', 'tutorial_id'),
+            'contain' => array(
+                'Tutorial' => array(
+                    'fields' => array('chapters')
+                ),
+                'User' => array(
+                    'fields' => array('username', 'email')
+                )
+            ),
+            'conditions' => array(
+                'Question.user_id' => $userId
+            )
+            
+        );
+        
+        $questionList = $this->Question->find('all', $option);
         $this->set('questionList', $questionList);
     }
 }    

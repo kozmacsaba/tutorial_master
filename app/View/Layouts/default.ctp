@@ -51,6 +51,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                 <div class="col-md-6">
                     <ul class="menu">
                         <li><?php echo $this->Html->link('Leirasok', array('controller' => 'tutorials', 'action' => 'tutorial_list'))?></li>
+                        <li><?php echo $this->Html->link('Teszteles', array('controller' => 'questions', 'action' => 'question_list')) ?></li>
                     </ul>
                 </div>
                 <div class="col-md-6">
@@ -86,7 +87,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                         <?php if(AuthComponent::user('id')){ ?>
                             <li><?php echo $this->Html->link('Tutorial letrehozas', array('controller' => 'tutorials', 'action' => 'tutorial_created')) ?></li>
                             <li><?php echo $this->Html->link('Sajat tutorialok', array('controller' => 'tutorials', 'action' => 'user_tutorial_list')) ?></li>
-                            <li><?php echo $this->Html->link('Tesztek keszitese', array('controller' => 'questions', 'action' => 'questions')) ?></li>
+                            <li><?php echo $this->Html->link('Tesztek keszitese', array('controller' => 'questions', 'action' => 'questions_created')) ?></li>
                             <li><?php echo $this->Html->link('Sajat teszteim', array('controller' => '', 'action' => '')) ?></li>
                         <?php }else{ ?> 
                             <li><?php echo $this->Html->link('Kuldjel te is leirasat', array('controller' => '', 'action' => '')) ?></li>    
