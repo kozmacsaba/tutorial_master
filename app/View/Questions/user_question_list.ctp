@@ -29,12 +29,11 @@
                 </td>
                 <td><?= $questionList['Question']['created'] ?></td>
                 <td>
-                    <?php echo $this->Html->link('Szerkesztesz', array('controller' => '', 'action' => ''), array('class' => 'btn btn-warning button')) ?><br>
-                    <?php echo $this->Html->link('Visited', array('controller' => '', 'action' => ''), array('class' => 'btn btn-info')) ?>
+                    <?php echo $this->Html->link('Szerkesztesz', array('controller' => 'questions', 'action' => 'question_edit', $questionList['Question']['id']), array('class' => 'btn btn-warning button')) ?><br>
+                    <?php echo $this->Html->link('Visited', array('controller' => 'questions', 'action' => 'question_visited', $questionList['Tutorial']['id']), array('class' => 'btn btn-info')) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
-    <
 </div>

@@ -153,7 +153,7 @@ class QuestionsController extends AppController{
             'fields' => array('id', 'name', 'type', 'created', 'tutorial_id'),
             'contain' => array(
                 'Tutorial' => array(
-                    'fields' => array('chapters')
+                    'fields' => array('chapters', 'id')
                 ),
                 'User' => array(
                     'fields' => array('username', 'email')
@@ -168,4 +168,51 @@ class QuestionsController extends AppController{
         $questionsList = $this->Question->find('all', $option);
         $this->set('questionsList', $questionsList);
     }
+    
+    public function question_visited($id = NULL){
+        
+        $option = array(
+            'fields' => array('name', 'respons', 'type', 'created', 'tutorial_id', 'id'),
+            'contain' => array(
+                'Tutorial' => array(
+                    'fields' => array('chapters')
+                ),
+                'User' => array(
+                    'fields' => array('username')
+                )
+            ),
+            'conditions' => array(
+                'Question.tutorial_id' => $id
+            )
+        );
+        
+        $visiteds = $this->Question->find('all', $option);
+        $this->set('visiteds', $visiteds);
+    }
+    
+    public function question_edit($id = null){
+        
+        $option = array(
+            'fields' => array('name', 'respons', 'type', 'id'),
+            'contain' => array(
+                'Tutorial' => array(
+                    'fields' => array('chapters')
+                )
+            ),
+            'conditions' => array(
+                'Question.id' => $id
+            )
+        );
+        
+        $edits = $this->Question->find('all', $option);
+        $this->set('edits', $edits);
+        
+        if($this->request->is(array('post', 'put'))){
+            $id = $_POST['questionId'];
+            echo $id;
+            exit();
+        }
+    }
+    
+    
 }    
