@@ -97,6 +97,13 @@ class QuestionsController extends AppController{
     }
     
     public function question($id = NULL){
+        $correctAnswer = '';
+        $wrongAnswer = '';
+        $correctAnswer1 = '';
+        $wrongAnswer1 = '';
+        
+        $userId = AuthComponent::user('id');
+        $this->loadModel('Score');
         
         $option = array(
             'fields' => array('id', 'name', 'respons', 'type', 'created', 'tutorial_id'),
@@ -115,6 +122,27 @@ class QuestionsController extends AppController{
         
         $questions = $this->Question->find('all', $option);
         $this->set('questions', $questions);
+        
+        if($this->request->is('post')){
+            $this->Score->create();
+            
+            if(!empty($_POST['correctAnswer']))
+                $correctAnswer = $_POST['correctAnswer'];
+            if(!empty($_POST['wrongAnswer']))
+                $wrongAnswer = $_POST['wrongAnswer'];
+            if(!empty($_POST['correctAnswer1']))
+                $correctAnswer1 = $_POST['correctAnswer1'];
+            if(!empty($_POST['wrongAnswer1']))
+                $wrongAnswer1 = $_POST['wrongAnswer1'];
+            
+            $json = '{"helyesvalasz":"' . $correctAnswer . '","rosszvalasz":"' . $wrongAnswer . '","helyesvalasz1":"' . $correctAnswer1 . '","rosszvalasz2":"' . $wrongAnswer1 . '"}';
+            
+            $this->Score->data['Score']['response_checkbox'] = $json;
+            $this->Score->data['Score']['user_id'] = $userId;
+            if($this->Score->save($this->request->data)){
+                return $this->redirect(array('action' => 'question_list'));
+            }
+        }
     }
     
     public function user_question_list($id = NULL){
@@ -122,7 +150,7 @@ class QuestionsController extends AppController{
         $userId = AuthComponent::user('id');
         
         $option = array(
-            'fields' => array('id', 'created', 'tutorial_id'),
+            'fields' => array('id', 'name', 'type', 'created', 'tutorial_id'),
             'contain' => array(
                 'Tutorial' => array(
                     'fields' => array('chapters')
@@ -137,7 +165,7 @@ class QuestionsController extends AppController{
             
         );
         
-        $questionList = $this->Question->find('all', $option);
-        $this->set('questionList', $questionList);
+        $questionsList = $this->Question->find('all', $option);
+        $this->set('questionsList', $questionsList);
     }
 }    

@@ -54,4 +54,6 @@ $(document).ready(function(){
             ]
 
         });
+    
+    $('#user_question_list').dataTable()
 });

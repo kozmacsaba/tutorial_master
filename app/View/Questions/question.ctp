@@ -56,12 +56,12 @@ $dateSelect = array_values($dateSelect);
                     ?>
                     <div class="form-group">
                         <?php 
-                        echo $this->Form->input('Score.respons', array(
+                        echo $this->Form->input('Score.respons_text', array(
                                                         'type' => 'text',
                                                         'label' => array('text' => 'Valaszt ide irhatod be', 'class' => 'control-label col-md-3', 'for' => 'Valaszt ide irhatod be'),
                                                         'wrap' => 'col-md-6',
                                                         'div' => false,
-                                                        'class' => 'form-control'
+                                                        'class' => 'form-control',
                                                     )
                                                 );
                         ?>
@@ -85,7 +85,7 @@ $dateSelect = array_values($dateSelect);
                     ?>    
                     <div class="form-group">
                         <?php 
-                        echo $this->Form->input('Score.respons', array(
+                        echo $this->Form->input('Score.response_radio', array(
                                                         'type' => 'radio',
                                                         'label' => false,
                                                         'wrap' => 'col-md-6',
@@ -119,7 +119,8 @@ $dateSelect = array_values($dateSelect);
                         <div class="col-md-6">
                             <div class="checkbox">
                                 <label>
-                                    <?php echo $this->Form->checkbox('Score.respons', array('value' => $correctAnswer)); ?><?= $correctAnswer ?>
+                                    <?php //echo $this->Form->checkbox('Score.response_checkbox', array('value' => $correctAnswer)); ?>
+                                    <input type="checkbox" name="correctAnswer" value="<?= $correctAnswer ?>"><?= $correctAnswer ?>
                                 </label>
                             </div>
                         </div>    
@@ -128,7 +129,8 @@ $dateSelect = array_values($dateSelect);
                         <div class="col-md-6">
                             <div class="checkbox">
                                 <label>
-                                    <?php echo $this->Form->checkbox('Score.respons', array('value' => $wrongAnswer)); ?><?= $correctAnswer ?>
+                                    <?php //echo $this->Form->checkbox('Score.response_checkbox', array('value' => $wrongAnswer)); ?>
+                                    <input type="checkbox" name="wrongAnswer" value="<?= $wrongAnswer ?>"><?= $wrongAnswer ?>
                                 </label>
                             </div>
                         </div>    
@@ -137,7 +139,8 @@ $dateSelect = array_values($dateSelect);
                         <div class="col-md-6">
                             <div class="checkbox">
                                 <label>
-                                    <?php echo $this->Form->checkbox('Score.respons', array('value' => $correctAnswer1)); ?><?= $correctAnswer1 ?>
+                                    <?php //echo $this->Form->checkbox('Score.response_checkbox', array('value' => $correctAnswer1)); ?>
+                                    <input type="checkbox" name="correctAnswer1" value="<?= $correctAnswer1 ?>"><?= $correctAnswer1 ?>
                                 </label>
                             </div>
                         </div>    
@@ -146,7 +149,8 @@ $dateSelect = array_values($dateSelect);
                         <div class="col-md-6">
                             <div class="checkbox">
                                 <label>
-                                    <?php echo $this->Form->checkbox('Score.respons', array('value' => $wrongAnswer1)); ?><?= $wrongAnswer ?>
+                                    <?php //echo $this->Form->checkbox('Score.response_checkbox', array('value' => $wrongAnswer1)); ?>
+                                    <input type="checkbox" name="wrongAnswer1" value="<?= $wrongAnswer1 ?>"><?= $wrongAnswer1 ?>
                                 </label>
                             </div>
                         </div>    
@@ -156,7 +160,7 @@ $dateSelect = array_values($dateSelect);
                     ?>
                     <!-- question checkbox type end -->
                     <?php echo $this->Form->input('Score.tutorial_id', array('type' => 'hidden', 'label' => false, 'value' => $question['Question']['tutorial_id'])) ?>
-                    <?php //echo $this->Form->input('Score.question_id', array('type' => 'hidden', 'label' => false, 'value' => $questions['Question']['id'])) ?>
+                    <?php echo $this->Form->input('Score.question_id', array('type' => 'hidden', 'label' => false, 'value' => $question['Question']['id'])) ?>
                 <?php endforeach; ?>
                 <div class="form-group">
                     <?php echo $this->Form->input('Mentes', array('type' => 'submit', 'label' => false, 'class' => 'btn btn-default')) ?>
